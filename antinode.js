@@ -165,7 +165,7 @@ function updateScore(player, opponent) {
                 player.score = 0;
                 opponent.button.disabled = false;
                 player.button.disabled = true;
-                gameInfo.textContent = `You rolled out rolled ${dieOutcome} but you need to roll a 6 to start playing on the board' ${player.userName}. You've officially started your game`;
+                gameInfo.textContent = `You rolled out rolled ${dieOutcome}, but you need to roll a 6 to start playing on the board, ${player.userName}.`;
             }
         } else {
             document.querySelector(`.${player.seed}`).classList = ''
