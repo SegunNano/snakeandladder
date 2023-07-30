@@ -22,12 +22,12 @@ body {
 .playerOne, .playerTwo {
     width: 50%;
     aspect-ratio: 1;
-    border-radius: 50%;
+    border-radius: 40%;
 }
 .playerOne {
     background-color: blue;
 }
 .playerTwo {
     
-    background-color: red;
+    background-color: rgb(30, 131, 114);
 }
