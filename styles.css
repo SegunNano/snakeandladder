@@ -20,14 +20,14 @@ body {
     color: black;
 }
 .playerOne, .playerTwo {
-    width: 50%;
+    width: 40%;
     aspect-ratio: 1;
-    border-radius: 40%;
+    border-radius: 50%;
 }
 .playerOne {
-    background-color: blue;
+    background-color: black;
 }
 .playerTwo {
     
-    background-color: rgb(30, 131, 114);
+    background-color: rgb(255, 255, 255);
 }

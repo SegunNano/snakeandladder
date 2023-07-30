@@ -15,7 +15,19 @@ const p2 = {
 const playGround = document.querySelector('#playGround');
 const gameInfo = document.querySelector('#gameInfo');
 let isGameOver = false;
-let moves = 0;
+const board = {
+    snake: {
+        head: [8, 18, 26, 39, 51, 54, 56, 60, 75, 83, 85, 90, 92, 97, 99],
+        tail: [4, 1, 10, 5, 6, 36, 1, 23, 28, 45, 59, 48, 25, 87, 63],
+    },
+    ladder: {
+        foot: [3, 6, 11, 15, 17, 22, 28, 49, 57, 61, 73, 81, 88],
+        top: [20, 14, 28, 34, 74, 37, 59, 67, 76, 78, 86, 98, 91]
+    }
+}
+const initialPosition = board.snake.head.concat(board.ladder.foot);
+const finalPosition = board.snake.tail.concat(board.ladder.top);
+
 for (let i = 1; i < 101; i++) {
     const numberDiv = document.createElement('div');
     if (i > 10 && i < 21) {
@@ -67,9 +79,9 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-60`)
         } else if (i === 52) {
             numberDiv.classList.add(`square-59`)
-        } else if (i === 55) {
+        } else if (i === 53) {
             numberDiv.classList.add(`square-58`)
-        } else if (i === 55) {
+        } else if (i === 54) {
             numberDiv.classList.add(`square-57`)
         } else if (i === 55) {
             numberDiv.classList.add(`square-56`)
@@ -89,7 +101,7 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-80`)
         } else if (i === 72) {
             numberDiv.classList.add(`square-79`)
-        } else if (i === 77) {
+        } else if (i === 73) {
             numberDiv.classList.add(`square-78`)
         } else if (i === 74) {
             numberDiv.classList.add(`square-77`)
@@ -111,7 +123,7 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-100`)
         } else if (i === 92) {
             numberDiv.classList.add(`square-99`)
-        } else if (i === 99) {
+        } else if (i === 93) {
             numberDiv.classList.add(`square-98`)
         } else if (i === 94) {
             numberDiv.classList.add(`square-97`)
@@ -129,7 +141,6 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-91`)
         }
     } else {
-        numberDiv.classList.add(`unReverse`);
         numberDiv.classList.add(`square-${i}`);
     }
     // showNumber.textContent = `${numberDiv.classList.value}`
@@ -147,7 +158,6 @@ p2Button.addEventListener('click', function() {
 });
 
 function updateScore(player, opponent) {
-    moves ++
     if(!isGameOver) {
         dieOutcome = rollDie();
         if (player.score === 0) {
@@ -168,24 +178,49 @@ function updateScore(player, opponent) {
                 gameInfo.textContent = `You rolled out rolled ${dieOutcome}, but you need to roll a 6 to start playing on the board, ${player.userName}.`;
             }
         } else {
-            document.querySelector(`.${player.seed}`).classList = ''
+            // document.querySelector(`.${player.seed}`).classList = ''
+            while (document.querySelector(`.${player.seed}`)) {
+                document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+            }
             player.score += dieOutcome;
             if (player.score === 100) {
                 isGameOver = true;
                 opponent.button.disabled = true;
                 player.button.disabled = true;
                 gameInfo.textContent = `${player.userName} wins the Game`
+            } else if (player.score > 100) {
+                opponent.button.disabled = false;
+                player.button.disabled = true;
+                player.score -= dieOutcome;
+                gameInfo.textContent = `${player.userName} rolled ${dieOutcome}, but you need just ${100 -player.score} to win.`
             } else {
                 // const oldIndicator = document.querySelector()
                 opponent.button.disabled = false;
                 player.button.disabled = true;
                 gameInfo.textContent = `${player.userName} rolled ${dieOutcome}, so He's on number ${player.score}`;
-                console.log(player.score)
                 indicatorClass = `.square-${player.score}`;
                 indicatorDiv = document.createElement('div');
+                indicatorDiv.classList.add(player.seed);
                 newScore = document.querySelector(indicatorClass);
                 newScore.appendChild(indicatorDiv);
-                indicatorDiv.classList.add(player.seed)
+            }
+        }
+        for (i = 0; i < initialPosition.length; i++) {
+            if (player.score === initialPosition[i]) {
+                while (document.querySelector(`.${player.seed}`)) {
+                    document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+                }
+                if (i < 15) {
+                    gameInfo.textContent = `Uh-oh, you rolled ${dieOutcome}., you've got bitten by a snake at ${player.score}. You have to go back to ${finalPosition[i]} for the antidote.`;  
+                } else {
+                    gameInfo.textContent = `Up you go, ${player.userName}. You climbed the ladder from ${player.score} to ${finalPosition[i]}.`;  
+                }
+                player.score = finalPosition[i]
+                indicatorClass = `.square-${player.score}`;
+                indicatorDiv = document.createElement('div');
+                indicatorDiv.classList.add(player.seed);
+                newScore = document.querySelector(indicatorClass);
+                newScore.appendChild(indicatorDiv);;
             }
         }
         player.display.textContent = player.score;
