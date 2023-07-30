@@ -13,6 +13,7 @@ const p2 = {
 const playGround = document.querySelector('#playGround');
 const gameInfo = document.querySelector('#gameInfo');
 let isGameOver = false;
+let moves = 0;
 for (let i = 1; i < 101; i++) {
     const numberDiv = document.createElement('div');
     if (i > 10 && i < 21) {
@@ -143,11 +144,12 @@ p2Button.addEventListener('click', function() {
 });
 
 function updateScore(player, opponent) {
+    moves ++
     if(!isGameOver) {
         dieOutcome = rollDie();
         console.log(player.score)
         if (player.score > 1) {
-            document.querySelectorAll('div.indicator')[0].classList = ""
+            document.querySelectorAll('div.indicator')[moves % 2].classList = ""
         }
         player.score += dieOutcome;
         if (player.score === 100) {
