@@ -2,7 +2,6 @@
     width: 100%;
     aspect-ratio: 1;
     background-image: url("https://t4.ftcdn.net/jpg/04/71/35/61/360_F_471356144_rQ4ELeb0p59MXaf8Mrf8df9XMz5j6sCd.jpg");
-    /*max-width: 200px; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -20,18 +19,15 @@ body {
     aspect-ratio: 1;
     color: black;
 }
-/* #playGround div:hover {
-    background-color: rgb(128, 31, 31);
-    /* transform: scale(2); */
-.indicator {
-    width: 30%;
+.playerOne, .playerTwo {
+    width: 50%;
     aspect-ratio: 1;
     border-radius: 50%;
 }
-.blue {
+.playerOne {
     background-color: blue;
 }
-.green {
+.playerTwo {
     
     background-color: green;
 }

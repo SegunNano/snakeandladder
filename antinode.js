@@ -3,14 +3,14 @@ const p1 = {
     score: 1,
     button: document.querySelector('#p1Button'),
     display: document.querySelector('#p1Display'),
-    color: 'green'
+    seed: 'playerOne'
 }
 const p2 = {
     userName: 'segun',
     score: 1,
     button: document.querySelector('#p2Button'),
     display: document.querySelector('#p2Display'),
-    color: 'blue'
+    seed: 'playerTwo'
 }
 const playGround = document.querySelector('#playGround');
 const gameInfo = document.querySelector('#gameInfo');
@@ -139,35 +139,20 @@ for (let i = 1; i < 101; i++) {
     playGround.appendChild(numberDiv);
 }
 p1Button.addEventListener('click', function() {
-    updateScore(p1, p2)
+    updateScore(p1, p2);
 });
 
 p2Button.addEventListener('click', function() {
-    updateScore(p2, p1)
+    updateScore(p2, p1);
 });
 
 function updateScore(player, opponent) {
     moves ++
     if(!isGameOver) {
         dieOutcome = rollDie();
-        console.log(player.score);
-        classNamee = `.square-${player.score}`
+        console.log(typeof(player.seed))
         if (player.score > 1) {
-            if (player.score > opponent.score) {
-                placeHolder = 1;
-                if (document.querySelectorAll(classNamee)[0].classList[0] === 'UnReverse') {
-                    placeHolder = 0;
-                }   else {
-                    placeHolder = 1;
-                }
-            } else{
-                if (document.querySelectorAll(classNamee)[0].classList[0] === 'UnReverse') {
-                    placeHolder = 1;
-                }   else {
-                    placeHolder = 0;
-                }
-            }
-            document.querySelectorAll('div.indicator')[placeHolder].classList = ""
+            document.querySelector(`.${player.seed}`).classList = ''
         }
         player.score += dieOutcome;
         if (player.score === 100) {
@@ -186,7 +171,7 @@ function updateScore(player, opponent) {
             indicatorDiv = document.createElement('div');
             newScore = document.querySelector(indicatorClass);
             newScore.appendChild(indicatorDiv);
-            indicatorDiv.classList.add(`indicator`, player.color)
+            indicatorDiv.classList.add(player.seed)
         }
         player.display.textContent = player.score;
         ;
