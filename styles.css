@@ -1,0 +1,31 @@
+#playGround {
+    width: 100%;
+    aspect-ratio: 1;
+    background-image: url("https://t4.ftcdn.net/jpg/04/71/35/61/360_F_471356144_rQ4ELeb0p59MXaf8Mrf8df9XMz5j6sCd.jpg");
+    /*max-width: 200px; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: wrap-reverse;
+}
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJlMdlGR7WJu14Epy2nD-PG3xmNdveGRngCfGX1Qfe1hOvX7cJPUvDmjoeAB-ehKVSsM&usqp=CAU");
+}
+
+.numberDiv {
+    margin: 0;
+    width: 10%;
+    aspect-ratio: 1;
+    color: black;
+}
+/* #playGround div:hover {
+    background-color: rgb(128, 31, 31);
+    /* transform: scale(2); */
+.numberDiv div {
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 25%;
+    background-color: blue;
+}
