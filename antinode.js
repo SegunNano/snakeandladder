@@ -2,13 +2,15 @@ const p1 = {
     userName: 'fadipe',
     score: 1,
     button: document.querySelector('#p1Button'),
-    display: document.querySelector('#p1Display')
+    display: document.querySelector('#p1Display'),
+    color: 'green'
 }
 const p2 = {
     userName: 'segun',
     score: 1,
     button: document.querySelector('#p2Button'),
-    display: document.querySelector('#p2Display')
+    display: document.querySelector('#p2Display'),
+    color: 'blue'
 }
 const playGround = document.querySelector('#playGround');
 const gameInfo = document.querySelector('#gameInfo');
@@ -127,7 +129,8 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-91`)
         }
     } else {
-        numberDiv.classList.add(`square-${i}`)
+        numberDiv.classList.add(`unReverse`);
+        numberDiv.classList.add(`square-${i}`);
     }
     // showNumber.textContent = `${numberDiv.classList.value}`
     // console.log(playGround.getAttribute('class'))
@@ -147,9 +150,24 @@ function updateScore(player, opponent) {
     moves ++
     if(!isGameOver) {
         dieOutcome = rollDie();
-        console.log(player.score)
+        console.log(player.score);
+        classNamee = `.square-${player.score}`
         if (player.score > 1) {
-            document.querySelectorAll('div.indicator')[moves % 2].classList = ""
+            if (player.score > opponent.score) {
+                placeHolder = 1;
+                if (document.querySelectorAll(classNamee)[0].classList[0] === 'UnReverse') {
+                    placeHolder = 0;
+                }   else {
+                    placeHolder = 1;
+                }
+            } else{
+                if (document.querySelectorAll(classNamee)[0].classList[0] === 'UnReverse') {
+                    placeHolder = 1;
+                }   else {
+                    placeHolder = 0;
+                }
+            }
+            document.querySelectorAll('div.indicator')[placeHolder].classList = ""
         }
         player.score += dieOutcome;
         if (player.score === 100) {
@@ -168,7 +186,7 @@ function updateScore(player, opponent) {
             indicatorDiv = document.createElement('div');
             newScore = document.querySelector(indicatorClass);
             newScore.appendChild(indicatorDiv);
-            indicatorDiv.classList.add(`indicator`)
+            indicatorDiv.classList.add(`indicator`, player.color)
         }
         player.display.textContent = player.score;
         ;

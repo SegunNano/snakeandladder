@@ -27,5 +27,11 @@ body {
     width: 30%;
     aspect-ratio: 1;
     border-radius: 50%;
+}
+.blue {
     background-color: blue;
+}
+.green {
+    
+    background-color: green;
 }
