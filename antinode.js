@@ -1,13 +1,13 @@
 const p1 = {
-    userName: 'fadipe',
-    score: 1,
+    userName: 'Elijah',
+    score: 0,
     button: document.querySelector('#p1Button'),
     display: document.querySelector('#p1Display'),
     seed: 'playerOne'
 }
 const p2 = {
-    userName: 'segun',
-    score: 1,
+    userName: 'Diran',
+    score: 0,
     button: document.querySelector('#p2Button'),
     display: document.querySelector('#p2Display'),
     seed: 'playerTwo'
@@ -150,34 +150,47 @@ function updateScore(player, opponent) {
     moves ++
     if(!isGameOver) {
         dieOutcome = rollDie();
-        console.log(typeof(player.seed))
-        if (player.score > 1) {
-            document.querySelector(`.${player.seed}`).classList = ''
-        }
-        player.score += dieOutcome;
-        if (player.score === 100) {
-            isGameOver = true;
-            opponent.button.disabled = true;
-            player.button.disabled = true;
-            gameInfo.textContent = `${player.userName} wins the Game`
+        if (player.score === 0) {
+            if (dieOutcome === 6) {
+                player.score = 1
+                opponent.button.disabled = false;
+                player.button.disabled = true;
+                gameInfo.textContent = `Bingo!!!, You rolled out rolled ${dieOutcome}, ${player.userName}. You've officially started your game`;
+                indicatorClass = `.square-${player.score}`;
+                indicatorDiv = document.createElement('div');
+                newScore = document.querySelector(indicatorClass);
+                newScore.appendChild(indicatorDiv);
+                indicatorDiv.classList.add(player.seed)
+            } else {
+                player.score = 0;
+                opponent.button.disabled = false;
+                player.button.disabled = true;
+                gameInfo.textContent = `You rolled out rolled ${dieOutcome} but you need to roll a 6 to start playing on the board' ${player.userName}. You've officially started your game`;
+            }
         } else {
-            // const oldIndicator = document.querySelector()
-            console.log(player.score)
-            opponent.button.disabled = false;
-            player.button.disabled = true;
-            gameInfo.textContent = `${player.userName} rolled ${dieOutcome}, so He's on number ${player.score}`;
-            console.log(player.score)
-            indicatorClass = `.square-${player.score}`;
-            indicatorDiv = document.createElement('div');
-            newScore = document.querySelector(indicatorClass);
-            newScore.appendChild(indicatorDiv);
-            indicatorDiv.classList.add(player.seed)
+            document.querySelector(`.${player.seed}`).classList = ''
+            player.score += dieOutcome;
+            if (player.score === 100) {
+                isGameOver = true;
+                opponent.button.disabled = true;
+                player.button.disabled = true;
+                gameInfo.textContent = `${player.userName} wins the Game`
+            } else {
+                // const oldIndicator = document.querySelector()
+                opponent.button.disabled = false;
+                player.button.disabled = true;
+                gameInfo.textContent = `${player.userName} rolled ${dieOutcome}, so He's on number ${player.score}`;
+                console.log(player.score)
+                indicatorClass = `.square-${player.score}`;
+                indicatorDiv = document.createElement('div');
+                newScore = document.querySelector(indicatorClass);
+                newScore.appendChild(indicatorDiv);
+                indicatorDiv.classList.add(player.seed)
+            }
         }
         player.display.textContent = player.score;
-        ;
-    };
+    }
 }
-
 function rollDie() {
     return Math.floor(Math.random() * 6 + 1);
 }
