@@ -145,6 +145,10 @@ p2Button.addEventListener('click', function() {
 function updateScore(player, opponent) {
     if(!isGameOver) {
         dieOutcome = rollDie();
+        console.log(player.score)
+        if (player.score > 1) {
+            document.querySelectorAll('div.indicator')[0].classList = ""
+        }
         player.score += dieOutcome;
         if (player.score === 100) {
             isGameOver = true;
@@ -152,13 +156,17 @@ function updateScore(player, opponent) {
             player.button.disabled = true;
             gameInfo.textContent = `${player.userName} wins the Game`
         } else {
+            // const oldIndicator = document.querySelector()
+            console.log(player.score)
             opponent.button.disabled = false;
             player.button.disabled = true;
             gameInfo.textContent = `${player.userName} rolled ${dieOutcome}, so He's on number ${player.score}`;
+            console.log(player.score)
             indicatorClass = `.square-${player.score}`;
             indicatorDiv = document.createElement('div');
             newScore = document.querySelector(indicatorClass);
-            newScore.appendChild(indicatorDiv)
+            newScore.appendChild(indicatorDiv);
+            indicatorDiv.classList.add(`indicator`)
         }
         player.display.textContent = player.score;
         ;

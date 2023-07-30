@@ -23,9 +23,9 @@ body {
 /* #playGround div:hover {
     background-color: rgb(128, 31, 31);
     /* transform: scale(2); */
-.numberDiv div {
-    width: 70%;
+.indicator {
+    width: 20%;
     aspect-ratio: 1;
-    border-radius: 25%;
+    border-radius: 50%;
     background-color: blue;
 }
