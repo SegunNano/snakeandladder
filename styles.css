@@ -24,17 +24,16 @@ body {
     aspect-ratio: 1;
     border-radius: 50%;
 }
-.playerOne {
+.playerOne, .p1color {
     background-color: rgba(0, 0, 0, 0.836);
 }
-.playerTwo {
+.playerTwo, .p2color {
     
     background-color: rgba(255, 255, 255, 0.945);
 }
 .buttonDiv {
     width: 100%;
 }
-.card-footer-item {
-    width: 40%;
-    margin-top: 20px;
+.button {
+    width: 23%;
 }
