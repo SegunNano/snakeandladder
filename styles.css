@@ -37,3 +37,9 @@ body {
 .button {
     width: 30%;
 }
+.winner {
+    color:  green;
+}
+.loser {
+color: red;
+}

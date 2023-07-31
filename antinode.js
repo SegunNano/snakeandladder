@@ -178,7 +178,19 @@ function moveSeed(player, opponent) {
                 player.score += 1;
                 player.display.textContent = player.score;
                 startButton.textContent = 'Next Round';
-
+                player.seedPosition = 0
+                opponent.seedPosition = 0
+                while (p1.display.classList.length && p2.display.classList.length) {
+                    player.display.classList.remove('winner loser');
+                    opponent.display.classList.remove('loser winner');
+                }
+                if (player.score > opponent.score) {
+                    player.display.classList.add('winner');
+                    opponent.display.classList.add('loser');
+                } else if (player.score < opponent.score) {
+                    player.display.classList.add('loser');
+                    opponent.display.classList.add('winner');
+                }
             } else if (player.seedPosition > 100) {
                 opponent.button.disabled = false;
                 player.button.disabled = true;
@@ -223,6 +235,15 @@ function startGame() {
     p1.seedPosition = 0;
     p2.seedPosition = 0;
     turns = rollDie(2)
+    while (document.querySelector(`.${opponent.seed}`)) {
+        // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+        document.querySelector(`.${p1.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
+        while (document.querySelector(`.${player.seed}`)) {
+            // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+            document.querySelector(`.${p2.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
+        }
+    }
+    
     if (!turns) {
         p1.button.disabled = false;
         p2.button.disabled = true;
