@@ -25,9 +25,16 @@ body {
     border-radius: 50%;
 }
 .playerOne {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.836);
 }
 .playerTwo {
     
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.945);
+}
+.buttonDiv {
+    width: 100%;
+}
+.card-footer-item {
+    width: 40%;
+    margin-top: 20px;
 }
