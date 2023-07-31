@@ -28,16 +28,28 @@ p2.button.disabled = true;
 const board = {
     snake: {
         head: [8, 18, 26, 39, 51, 54, 56, 60, 75, 83, 85, 90, 92, 97, 99],
-        tail: [4, 1, 10, 5, 6, 36, 1, 23, 28, 45, 59, 48, 25, 87, 63],
+        tail: [4, 1, 10, 5, 6, 36, 1, 23, 28, 45, 59, 48, 25, 87, 63]
     },
     ladder: {
-        foot: [3, 6, 11, 15, 17, 22, 28, 49, 57, 61, 73, 81, 88],
+        foot: [3, 6, 11, 15, 17, 22, 38, 49, 57, 61, 73, 81, 88],
         top: [20, 14, 28, 34, 74, 37, 59, 67, 76, 78, 86, 98, 91]
     }
 }
 const initialPosition = board.snake.head.concat(board.ladder.foot);
 const finalPosition = board.snake.tail.concat(board.ladder.top);
+const createdDiv = [];
+const createdClass = [];
 
+for (let i = 11; i < 21; i++) {createdDiv.push(i)}
+for (let i = 31; i < 41; i++) {createdDiv.push(i)}
+for (let i = 51; i < 61; i++) {createdDiv.push(i)}
+for (let i = 71; i < 81; i++) {createdDiv.push(i)}
+for (let i = 91; i < 101; i++) {createdDiv.push(i)}
+for (let i = 20; i > 10; i--) {createdClass.push(i)}
+for (let i = 40; i > 30; i--) {createdClass.push(i)}
+for (let i = 60; i > 50; i--) {createdClass.push(i)}
+for (let i = 80; i > 70; i--) {createdClass.push(i)}
+for (let i = 100; i > 90; i--) {createdClass.push(i)}
 for (let i = 1; i < 101; i++) {
     const numberDiv = document.createElement('div');
     if (i > 10 && i < 21) {
@@ -63,92 +75,52 @@ for (let i = 1; i < 101; i++) {
             numberDiv.classList.add(`square-11`)
         }
     } else if (i > 30 && i < 41) {
-        if (i === 31)    {
-            numberDiv.classList.add(`square-40`)
-        } else if (i === 32) {
-            numberDiv.classList.add(`square-39`)
-        } else if (i === 33) {
-            numberDiv.classList.add(`square-38`)
-        } else if (i === 34) {
-            numberDiv.classList.add(`square-37`)
-        } else if (i === 35) {
-            numberDiv.classList.add(`square-36`)
-        } else if (i === 36) {
-            numberDiv.classList.add(`square-35`)
-        } else if (i === 37) {
-            numberDiv.classList.add(`square-34`)
-        } else if (i === 38) {
-            numberDiv.classList.add(`square-33`)
-        } else if (i === 39) {
-            numberDiv.classList.add(`square-32`)
-        } else if (i === 40) {
-            numberDiv.classList.add(`square-31`)
+        if (i === 31)    {numberDiv.classList.add(`square-40`)
+        } else if (i === 32) {numberDiv.classList.add(`square-39`)
+        } else if (i === 33) {numberDiv.classList.add(`square-38`)
+        } else if (i === 34) {numberDiv.classList.add(`square-37`)
+        } else if (i === 35) {numberDiv.classList.add(`square-36`)
+        } else if (i === 36) {numberDiv.classList.add(`square-35`)
+        } else if (i === 37) {numberDiv.classList.add(`square-34`)
+        } else if (i === 38) {numberDiv.classList.add(`square-33`)
+        } else if (i === 39) {numberDiv.classList.add(`square-32`)
+        } else if (i === 40) {numberDiv.classList.add(`square-31`)
         }
     } else if (i > 50 && i < 61) {
-        if (i === 51)    {
-            numberDiv.classList.add(`square-60`)
-        } else if (i === 52) {
-            numberDiv.classList.add(`square-59`)
-        } else if (i === 53) {
-            numberDiv.classList.add(`square-58`)
-        } else if (i === 54) {
-            numberDiv.classList.add(`square-57`)
-        } else if (i === 55) {
-            numberDiv.classList.add(`square-56`)
-        } else if (i === 56) {
-            numberDiv.classList.add(`square-55`)
-        } else if (i === 57) {
-            numberDiv.classList.add(`square-54`)
-        } else if (i === 58) {
-            numberDiv.classList.add(`square-53`)
-        } else if (i === 59) {
-            numberDiv.classList.add(`square-52`)
-        } else if (i === 60) {
-            numberDiv.classList.add(`square-51`)
+        if (i === 51)    {numberDiv.classList.add(`square-60`)
+        } else if (i === 52) {numberDiv.classList.add(`square-59`)
+        } else if (i === 53) {numberDiv.classList.add(`square-58`)
+        } else if (i === 54) {numberDiv.classList.add(`square-57`)
+        } else if (i === 55) {numberDiv.classList.add(`square-56`)
+        } else if (i === 56) {numberDiv.classList.add(`square-55`)
+        } else if (i === 57) {numberDiv.classList.add(`square-54`)
+        } else if (i === 58) {numberDiv.classList.add(`square-53`)
+        } else if (i === 59) {numberDiv.classList.add(`square-52`)
+        } else if (i === 60) {numberDiv.classList.add(`square-51`)
         }
     } else if (i > 70 && i < 81) {
-        if (i === 71)    {
-            numberDiv.classList.add(`square-80`)
-        } else if (i === 72) {
-            numberDiv.classList.add(`square-79`)
-        } else if (i === 73) {
-            numberDiv.classList.add(`square-78`)
-        } else if (i === 74) {
-            numberDiv.classList.add(`square-77`)
-        } else if (i === 75) {
-            numberDiv.classList.add(`square-76`)
-        } else if (i === 76) {
-            numberDiv.classList.add(`square-75`)
-        } else if (i === 77) {
-            numberDiv.classList.add(`square-74`)
-        } else if (i === 78) {
-            numberDiv.classList.add(`square-73`)
-        } else if (i === 79) {
-            numberDiv.classList.add(`square-72`)
-        } else if ((i === 80)){
-            numberDiv.classList.add(`square-71`)
+        if (i === 71)    {numberDiv.classList.add(`square-80`)
+        } else if (i === 72) {numberDiv.classList.add(`square-79`)
+        } else if (i === 73) {numberDiv.classList.add(`square-78`)
+        } else if (i === 74) {numberDiv.classList.add(`square-77`)
+        } else if (i === 75) {numberDiv.classList.add(`square-76`)
+        } else if (i === 76) {numberDiv.classList.add(`square-75`)
+        } else if (i === 77) {numberDiv.classList.add(`square-74`)
+        } else if (i === 78) {numberDiv.classList.add(`square-73`)
+        } else if (i === 79) {numberDiv.classList.add(`square-72`)
+        } else if ((i === 80)){numberDiv.classList.add(`square-71`)
         }
     } else if (i > 90 && i < 101) {
-        if (i === 91)    {
-            numberDiv.classList.add(`square-100`)
-        } else if (i === 92) {
-            numberDiv.classList.add(`square-99`)
-        } else if (i === 93) {
-            numberDiv.classList.add(`square-98`)
-        } else if (i === 94) {
-            numberDiv.classList.add(`square-97`)
-        } else if (i === 95) {
-            numberDiv.classList.add(`square-96`)
-        } else if (i === 96) {
-            numberDiv.classList.add(`square-95`)
-        } else if (i === 97) {
-            numberDiv.classList.add(`square-94`)
-        } else if (i === 98) {
-            numberDiv.classList.add(`square-93`)
-        } else if (i === 99) {
-            numberDiv.classList.add(`square-92`)
-        } else if (i === 100) {
-            numberDiv.classList.add(`square-91`)
+        if (i === 91)    {numberDiv.classList.add(`square-100`)
+        } else if (i === 92) {numberDiv.classList.add(`square-99`)
+        } else if (i === 93) {numberDiv.classList.add(`square-98`)
+        } else if (i === 94) {numberDiv.classList.add(`square-97`)
+        } else if (i === 95) {numberDiv.classList.add(`square-96`)
+        } else if (i === 96) {numberDiv.classList.add(`square-95`)
+        } else if (i === 97) {numberDiv.classList.add(`square-94`)
+        } else if (i === 98) {numberDiv.classList.add(`square-93`)
+        } else if (i === 99) {numberDiv.classList.add(`square-92`)
+        } else if (i === 100) {numberDiv.classList.add(`square-91`)
         }
     } else {
         numberDiv.classList.add(`square-${i}`);
@@ -201,11 +173,12 @@ function moveSeed(player, opponent) {
                 isGameOver = true;
                 opponent.button.disabled = true;
                 player.button.disabled = true;
-                gameInfo.textContent = `${player.userName} wins the Game`
-                startButton.disabled = false
-                player.score += 1
-                player.display.textContent = player.score
-                startButton.textContent = 'Next Round'
+                gameInfo.textContent = `${player.userName} wins the Game`;
+                startButton.disabled = false;
+                player.score += 1;
+                player.display.textContent = player.score;
+                startButton.textContent = 'Next Round';
+
             } else if (player.seedPosition > 100) {
                 opponent.button.disabled = false;
                 player.button.disabled = true;
@@ -247,6 +220,8 @@ function rollDie(e) {
 }
 function startGame() {
     isGameOver = false
+    p1.seedPosition = 0;
+    p2.seedPosition = 0;
     turns = rollDie(2)
     if (!turns) {
         p1.button.disabled = false;
@@ -268,5 +243,6 @@ quitButton.addEventListener('dblclick', function () {
         p1.display.textContent = 0;
         p2.display.textContent = 0;
         instructionInfo.textContent = 'Click Start To Begin'
+        startButton.textContent = 'Start Game'
     };
 });
