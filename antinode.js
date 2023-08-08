@@ -37,19 +37,19 @@ const board = {
 }
 const initialPosition = board.snake.head.concat(board.ladder.foot);
 const finalPosition = board.snake.tail.concat(board.ladder.top);
-const createdDiv = [];
-const createdClass = [];
+// const createdDiv = [];
+// const createdClass = [];
 
-for (let i = 11; i < 21; i++) {createdDiv.push(i)}
-for (let i = 31; i < 41; i++) {createdDiv.push(i)}
-for (let i = 51; i < 61; i++) {createdDiv.push(i)}
-for (let i = 71; i < 81; i++) {createdDiv.push(i)}
-for (let i = 91; i < 101; i++) {createdDiv.push(i)}
-for (let i = 20; i > 10; i--) {createdClass.push(i)}
-for (let i = 40; i > 30; i--) {createdClass.push(i)}
-for (let i = 60; i > 50; i--) {createdClass.push(i)}
-for (let i = 80; i > 70; i--) {createdClass.push(i)}
-for (let i = 100; i > 90; i--) {createdClass.push(i)}
+// for (let i = 11; i < 21; i++) {createdDiv.push(i)}
+// for (let i = 31; i < 41; i++) {createdDiv.push(i)}
+// for (let i = 51; i < 61; i++) {createdDiv.push(i)}
+// for (let i = 71; i < 81; i++) {createdDiv.push(i)}
+// for (let i = 91; i < 101; i++) {createdDiv.push(i)}
+// for (let i = 20; i > 10; i--) {createdClass.push(i)}
+// for (let i = 40; i > 30; i--) {createdClass.push(i)}
+// for (let i = 60; i > 50; i--) {createdClass.push(i)}
+// for (let i = 80; i > 70; i--) {createdClass.push(i)}
+// for (let i = 100; i > 90; i--) {createdClass.push(i)}
 for (let i = 1; i < 101; i++) {
     const numberDiv = document.createElement('div');
     if (i > 10 && i < 21) {
@@ -234,11 +234,11 @@ function startGame() {
     isGameOver = false
     p1.seedPosition = 0;
     p2.seedPosition = 0;
-    turns = rollDie(2)
-    while (document.querySelector(`.${opponent.seed}`)) {
+    turns = rollDie(2) - 1;
+    while (document.querySelector(`.${p1.seed}`)) {
         // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
         document.querySelector(`.${p1.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
-        while (document.querySelector(`.${player.seed}`)) {
+        while (document.querySelector(`.${p2.seed}`)) {
             // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
             document.querySelector(`.${p2.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
         }
