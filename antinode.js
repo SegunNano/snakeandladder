@@ -165,10 +165,10 @@ function moveSeed(player, opponent) {
         } else {
             // document.querySelector(`.${player.seed}`).classList = ''
             if (player.seedPosition + dieOutcome < 101) {
-               while (document.querySelector(`.${player.seed}`)) {
-                // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
-                document.querySelector(`.${player.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
-            } 
+                while (document.querySelector(`.${player.seed}`)) {
+                    // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+                    document.querySelector(`.${player.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
+                } 
             }
             player.seedPosition += dieOutcome;
             if (player.seedPosition === 100) {
@@ -180,8 +180,8 @@ function moveSeed(player, opponent) {
                 player.score += 1;
                 player.display.textContent = player.score;
                 startButton.textContent = 'Next Round';
-                player.seedPosition = 0
-                opponent.seedPosition = 0
+                player.seedPosition = 0;
+                opponent.seedPosition = 0;
                 while (p1.display.classList.length && p2.display.classList.length) {
                     player.display.classList.remove('winner loser');
                     opponent.display.classList.remove('loser winner');
@@ -237,15 +237,12 @@ function startGame() {
     p1.seedPosition = 0;
     p2.seedPosition = 0;
     turns = rollDie(2) - 1;
-    while (document.querySelector(`.${p1.seed}`)) {
+    while (document.querySelector(`.${p1.seed}`) || document.querySelector(`.${p2.seed}`)) {
         // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
-        document.querySelector(`.${p1.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
-        while (document.querySelector(`.${p2.seed}`)) {
-            // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
-            document.querySelector(`.${p2.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
-        }
+        document.querySelector(`.${p1.seed}`).parentElement.removeChild(document.querySelector(`.${p1.seed}`));
+        // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
+        document.querySelector(`.${p2.seed}`).parentElement.removeChild(document.querySelector(`.${p2.seed}`));
     }
-    
     if (!turns) {
         p1.button.disabled = false;
         p2.button.disabled = true;
