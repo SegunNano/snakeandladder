@@ -164,9 +164,11 @@ function moveSeed(player, opponent) {
             }
         } else {
             // document.querySelector(`.${player.seed}`).classList = ''
-            while (document.querySelector(`.${player.seed}`)) {
+            if (player.seedPosition + dieOutcome < 101) {
+               while (document.querySelector(`.${player.seed}`)) {
                 // document.querySelector(`.${player.seed}`).parentElement.innerHTML = ''
                 document.querySelector(`.${player.seed}`).parentElement.removeChild(document.querySelector(`.${player.seed}`));
+            } 
             }
             player.seedPosition += dieOutcome;
             if (player.seedPosition === 100) {
